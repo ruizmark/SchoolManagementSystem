@@ -1,8 +1,7 @@
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.*;
 
 public class StudentManagementSystem {
 
@@ -26,8 +25,23 @@ public class StudentManagementSystem {
             e.printStackTrace();
         }
     }
-    
+
+
     public static void addStudent(){
+        //TODO Add some useful code here
+
+        /*
+            Thing to work on:
+
+            1. adding a student Id for each user added
+            and making sure that the Id does not repeat.
+            Randomization for the Ids might work well for this.
+
+         */
+
+        Random rand = new Random();
+
+
         // Write To a File
         try {
             Scanner keyboard = new Scanner(System.in);
@@ -57,6 +71,16 @@ public class StudentManagementSystem {
     }
 
     public static void findStudent(){
+        //TODO Add some useful code here
+        /*
+        I though I might need to use a liner or binary search for this
+        method but the link below might help with this.
+
+        This might help with with method
+        https://stackoverflow.com/questions/6016348/search-particular-column-value-from-csv-file-using-java
+
+         */
+
         // Reading a CSV File into an Array
 
         //Create a 2D ArrayList
