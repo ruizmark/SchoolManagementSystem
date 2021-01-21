@@ -1,5 +1,3 @@
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.*;
 import java.util.*;
 
@@ -26,24 +24,33 @@ public class StudentManagementSystem {
         }
     }
 
+    private static int latestId = 0;
+
+    public static int generateId() {
+        return ++latestId;
+    }
+
 
     public static void addStudent(){
         //TODO Add some useful code here
 
         /*
             Thing to work on:
-
             1. adding a student Id for each user added
             and making sure that the Id does not repeat.
             Randomization for the Ids might work well for this.
 
+            this might help!
+            https://stackoverflow.com/questions/20384127/creating-an-incremental-number-sequence-in-java
          */
 
-        Random rand = new Random();
+        //Random rand = new Random();
 
 
         // Write To a File
         try {
+            int studentId = generateId();
+
             Scanner keyboard = new Scanner(System.in);
             System.out.print("Student first name: ");
             String firstName = keyboard.nextLine();
@@ -56,7 +63,7 @@ public class StudentManagementSystem {
 
             // By default FileWriter will overwrite the file. Need to append to true.
             FileWriter myWriter = new FileWriter("filename.csv", true);
-            myWriter.write(firstName + "," + lastName + "," + gradYear + "\n");
+            myWriter.write(studentId + "," +firstName + "," + lastName + "," + gradYear + "\n");
 
             // Example for .csv
             //myWriter.write("John, Deer, 2024\n");
@@ -75,10 +82,8 @@ public class StudentManagementSystem {
         /*
         I though I might need to use a liner or binary search for this
         method but the link below might help with this.
-
         This might help with with method
         https://stackoverflow.com/questions/6016348/search-particular-column-value-from-csv-file-using-java
-
          */
 
         // Reading a CSV File into an Array
