@@ -86,21 +86,31 @@ public class StudentManagementSystem {
         https://stackoverflow.com/questions/6016348/search-particular-column-value-from-csv-file-using-java
          */
 
-        // Reading a CSV File into an Array
+        /*
+            Reading a CSV File into an Array
+            https://stackoverflow.com/questions/33034833/converting-csv-file-into-2d-array
+        */
 
         //Create a 2D ArrayList
-        List<List<String>> records = new ArrayList<>();
+        List<String[]> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("filename.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                records.add(Arrays.asList(values));
+                records.add(line.split(","));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println(records);
+        String[][] array = new String[records.size()][0];
+        records.toArray(array);
+
+        for (int i = 0;i < array.length; i++){
+            for(int j = 0;j < array[i].length;j++){
+                System.out.print(array[i][j] + ",");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
