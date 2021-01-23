@@ -1,4 +1,7 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class StudentManagementSystem {
@@ -24,10 +27,34 @@ public class StudentManagementSystem {
         }
     }
 
-    private static int latestId = 0;
 
-    public static int generateId() {
-        return ++latestId;
+    /*
+        Decided on how I was going to create the student IDs...
+
+        Random could have worked but would have to created
+        an if statement to check for duplication and stored
+        that information somewhere. For now the row number
+        will be the student ID.
+
+     */
+    public static long countLineJava8() {
+
+        Path path = Paths.get("filename.csv");
+
+        // You can start this at any number for student IDs in my case 10000
+        long lines = 10000;
+        try {
+
+            // much slower, this task better with sequence access
+            //lines = Files.lines(path).parallel().count();
+
+            lines += Files.lines(path).count();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return lines;
     }
 
 
@@ -49,7 +76,8 @@ public class StudentManagementSystem {
 
         // Write To a File
         try {
-            int studentId = generateId();
+            long studentId = countLineJava8();
+
 
             Scanner keyboard = new Scanner(System.in);
             System.out.print("Student first name: ");
@@ -107,7 +135,7 @@ public class StudentManagementSystem {
 
         for (int i = 0;i < array.length; i++){
             for(int j = 0;j < array[i].length;j++){
-                System.out.print(array[i][j] + ",");
+                System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
