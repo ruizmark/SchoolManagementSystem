@@ -1,2 +1,2 @@
-# School-Management-System
+# SchoolManagementSystem
 SMS Built by Mark Ruiz
